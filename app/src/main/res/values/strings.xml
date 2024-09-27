@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">LatihanDicoding2</string>
+    <string name="pindah_activity">Pindah Activity</string>
+    <string name="move_with_data">Move With Data</string>
+    <string name="Move_With_Data" />
+    <string name="pindah_activity_dengan_data">Pindah Activity dengan Data</string>
+    <string name="pindah_dengan_object">Pindah Dengan Object</string>
+    <string name="object_received">Object Received</string>
+    <string name="dial_number">Dial Number</string>
+</resources>
