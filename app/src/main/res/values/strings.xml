@@ -7,4 +7,11 @@
     <string name="pindah_dengan_object">Pindah Dengan Object</string>
     <string name="object_received">Object Received</string>
     <string name="dial_number">Dial Number</string>
+    <string name="choose_number">Choose number</string>
+    <string name="_50">50</string>
+    <string name="_100">100</string>
+    <string name="_150">150</string>
+    <string name="_200">200</string>
+    <string name="button_for_result">Button For Result</string>
+    <string name="result">Result</string>
 </resources>

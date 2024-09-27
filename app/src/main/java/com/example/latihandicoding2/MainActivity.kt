@@ -5,12 +5,24 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
+
+    private lateinit var tvResult : TextView
+
+    private val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+        result ->
+        if (result.resultCode == MainForResultActivity.RESULT_CODE && result.data != null){
+            val selectedValue = result.data?.getIntExtra(MainForResultActivity.EXTRA_SELECTED_VALUE,0)
+            tvResult.text = "Hasil Pilih : $selectedValue"
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +40,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         val btnDial : Button = findViewById(R.id.Dial)
         btnDial.setOnClickListener(this)
+
+        val btnForResult : Button = findViewById(R.id.ForResult)
+        btnForResult.setOnClickListener(this)
+
+        tvResult = findViewById(R.id.tv_result)
     }
 
     override fun onClick(view: View?) {
@@ -54,6 +71,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val phoneNumber = "0812341212"
                 val dialPhoneIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneNumber"))
                 startActivity(dialPhoneIntent)
+            }
+            R.id.ForResult -> {
+                val resultLaunch = Intent(this@MainActivity,MainForResultActivity::class.java)
+                resultLauncher.launch(resultLaunch)
             }
         }
     }
